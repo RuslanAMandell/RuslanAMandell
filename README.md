@@ -1,5 +1,5 @@
 <h1 align="left" id="ruslanm-title">👋 Hi, I'm Ruslan Mandell</h1>
-<h4 align="left">Software engineer at a Series A payments-infrastructure company. Founder. I ship whole products, not tickets.</h4>
+<h4 align="left">Entrepreneur & Software engineer at a Series A payments-infrastructure company.</h4>
 
 ---
 
