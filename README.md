@@ -1,61 +1,56 @@
-<h1 align="left" id="ruslanm-title">👋 Hello there! I'm Ruslan Mandell</h1>
-<h4 align="left">I'm a student at Toronto Metropolitan University, pursuing a major in Computer Science.</h4>
+<h1 align="left" id="ruslanm-title">👋 Hi, I'm Ruslan Mandell</h1>
+<h4 align="left">Software engineer at a Series A payments-infrastructure company. Founder. I ship whole products, not tickets.</h4>
 
 ---
 
-![Profile Views](https://komarev.com/ghpvc/?username=RuslanAMandell&color=blue) 
-![GitHub followers](https://img.shields.io/github/followers/RuslanAMandell?label=Followers&style=social) 
-![Stars](https://img.shields.io/github/stars/RuslanAMandell?label=Stars&style=social)
+![Profile Views](https://komarev.com/ghpvc/?username=RuslanAMandell&color=blue)
+![GitHub followers](https://img.shields.io/github/followers/RuslanAMandell?label=Followers&style=social)
 
-## 🌟 About Me
+## 🛠 What I'm doing now
 
-- 💡 Always exploring new tech and innovative game ideas.
-- 🎮 Active Twitch streamer as **iloverusi** – join the community!
-- 💼 Building games, web apps, and unique programming projects.
-- 🌐 Experienced with languages, frameworks, and cloud platforms.
-- 🎓 Currently deepening my knowledge of computer science concepts and applications.
+- 💸 **Software Engineer @ Cybrid** (Series A stablecoin payments infrastructure, 150+ countries): sole engineer on the white-label B2B payments app; shipped the integrations that opened cross-border remittance corridors into Africa and India.
+- 🤖 Building at the intersection of **AI agents and commerce**: making online stores sellable to the machine buyers arriving now.
+- 🎓 Finishing my Computer Science degree at Toronto Metropolitan University (Jan 2027) while working full-time.
 
----
+## 📦 Things I've built
 
-## 🚀 Skills & Tools
+- **PokePortal**: collectibles ecommerce brand, $0 → $300K USD sales in its first year, run solo end to end (sourcing, live commerce, fulfillment).
+- **LeadNest**: lead-generation SaaS launched solo: business targeting via Google Places API, automated outreach, Stripe credit-based billing.
+- **Quizzler.io**: AI quiz generator turning uploaded images into quizzes (OpenAI + Google Cloud Vision).
+- **4 years of freelance builds**: ecommerce, booking flows, and Stripe payment systems for small businesses, many retained on monthly contracts.
+
+## 🚀 Stack
 
 ### Languages
 <p>
-  <img src="https://skillicons.dev/icons?i=python,cpp,c,lua" alt="Python, C++, C, Lua" />
+  <img src="https://skillicons.dev/icons?i=ts,js,python,ruby,java,lua,c,cpp" alt="TypeScript, JavaScript, Python, Ruby, Java, Lua, C, C++" />
 </p>
 
-### Frontend Development
+### Frontend
 <p>
-  <img src="https://skillicons.dev/icons?i=html,css,js" alt="HTML, CSS, JavaScript" />
+  <img src="https://skillicons.dev/icons?i=react,angular,html,css,tailwind,vite" alt="React, Angular, HTML, CSS, TailwindCSS, Vite" />
 </p>
 
-### Backend & Databases
+### Backend & Data
 <p>
-  <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb,mysql" alt="Node.js, Express, MongoDB, MySQL" />
+  <img src="https://skillicons.dev/icons?i=rails,nodejs,express,postgres" alt="Ruby on Rails, Node.js, Express, PostgreSQL" />
 </p>
 
-### Game Development
+### Cloud & Tools
 <p>
-  <img src="https://skillicons.dev/icons?i=unity,roblox" alt="Unity, Roblox" />
+  <img src="https://skillicons.dev/icons?i=aws,gcp,git,github" alt="AWS, GCP, Git, GitHub" />
 </p>
 
-### Tools & Platforms
+- ⚡ AI-native workflow: Claude Code daily with custom agent skills, plus Codex, Gemini, and Cursor.
+- 🔁 Production experience with Temporal workflows, REST APIs, and payment-gateway integrations.
+
+## 📫 Connect
+
 <p>
-  <img src="https://skillicons.dev/icons?i=git,github,linux,vscode" alt="Git, GitHub, Linux, VS Code" />
+  <a href="https://linkedin.com/in/ruslanmandell"><img src="https://skillicons.dev/icons?i=linkedin" alt="LinkedIn" /></a>
+  <a href="mailto:ruslanmandell@outlook.com"><img src="https://skillicons.dev/icons?i=gmail" alt="Email" /></a>
 </p>
 
 ---
 
-
-
-## 📫 Connect with Me
-
-<p>
-  <a href="https://twitch.tv/iloverusi"><img src="https://skillicons.dev/icons?i=twitch" alt="Twitch" /></a>
-  <a href="mailto:ruslanmandell@outlook.com"><img src="https://skillicons.dev/icons?i=gmail" alt="Gmail" /></a>
-  <a href="https://linkedin.com/in/RuslanMandell"><img src="https://skillicons.dev/icons?i=linkedin" alt="LinkedIn" /></a>
-</p>
-
----
-
-Thanks for visiting, and let’s connect on some exciting projects!
+Building something in ecommerce or payments? Let's talk.
