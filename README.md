@@ -22,6 +22,22 @@ Hey, I'm Ruslan, a software engineer in Toronto.
 - Four years of freelance web and payments work for small businesses
 - Built a macOS app, a Claude Code plugin, and a few Roblox games
 
+**Things I like**
+- Building small tools for the way I actually work, like a study app that helps me go deep on the topics I want to know well
+- Game dev, my guilty pleasure and where I lose track of time
+- Walking, a lot. My friends and family think the distances are insane
+- BJJ, and time with family, friends and my girlfriend
+- Simple ideas that make you think "how didn't I think of that"
+
+**Favorite project so far**
+The Africa integration at Cybrid, my first big project after going full-time. I had to learn payment flows, logistics and regulations, with a mentor who's the most helpful senior engineer I've worked with. Then I got to watch millions of dollars move through code I wrote.
+
+**On AI**
+Agentic coding works with you, not for you. It should speed up good work, not multiply slop.
+
+**Someday**
+I love code, but I'm an artist at heart. A coffee shop or a clothing brand is on the list. I just like making things for people.
+
 Studying CS at TMU, done January 2027.
 
 <!-- latest starts -->
