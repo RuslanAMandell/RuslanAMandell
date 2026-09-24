@@ -5,6 +5,7 @@
 //   GITHUB_TOKEN=... node scripts/build.mjs
 
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 
 const USER = "RuslanAMandell";
 const OUT = new URL("../assets/", import.meta.url);
@@ -190,7 +191,13 @@ ${months}
 // ---------- main ----------
 
 await mkdir(OUT, { recursive: true });
-const put = (name, svg) => writeFile(new URL(name, OUT), svg);
+// Content hash per asset, appended to README image URLs so browsers and
+// GitHub's image cache fetch the new file whenever it changes.
+const versions = {};
+const put = (name, svg) => {
+  versions[name] = createHash("sha1").update(svg).digest("hex").slice(0, 8);
+  return writeFile(new URL(name, OUT), svg);
+};
 
 const data = await gh(`query($login:String!){user(login:$login){contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{contributionCount date}}}}}}`, { login: USER });
 const headerFonts = await fontCSS(FONTS, PRINTABLE);
@@ -215,7 +222,10 @@ if (repos) {
   if (rel) parts.push(`released <a href="${rel.latestRelease.url}">${rel.name} ${rel.latestRelease.tagName}</a> ${day(rel.latestRelease.publishedAt)}`);
   if (nodes[0] && nodes[0].name !== rel?.name) parts.push(`last pushed to <a href="https://github.com/${USER}/${nodes[0].name}">${nodes[0].name}</a> ${day(nodes[0].pushedAt)}`);
   const readmeURL = new URL("../README.md", import.meta.url);
-  const readme = await readFile(readmeURL, "utf8");
+  let readme = await readFile(readmeURL, "utf8");
+  for (const [name, v] of Object.entries(versions)) {
+    readme = readme.replace(new RegExp(`assets/${name.replace(".", "\\.")}(\\?v=\\w+)?`, "g"), `assets/${name}?v=${v}`);
+  }
   const line = parts.length ? `<sub><samp>LATEST</samp> &nbsp; ${parts.join(" &nbsp;·&nbsp; ")}</sub>` : "";
   await writeFile(readmeURL, readme.replace(/(<!-- latest starts -->)[\s\S]*?(<!-- latest ends -->)/, `$1\n${line}\n$2`));
 }
