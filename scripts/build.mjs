@@ -107,7 +107,7 @@ function header(t, fonts) {
       dots += `<circle cx="${x}" cy="${y}" r="1.3" fill="${t.muted}" opacity="${o.toFixed(2)}"/>`;
     }
   }
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Ruslan Mandell — software engineer and founder building AI tools, apps and commerce">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Ruslan Mandell — software engineer in Toronto">
 <style>${fonts}
 .mono{font-family:'Geist Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.14em;fill:${t.muted}}
 .name{font-family:'Instrument Serif',Georgia,serif;font-size:92px;fill:${t.ink};letter-spacing:-.01em}
@@ -124,13 +124,13 @@ function header(t, fonts) {
 <circle class="pulse" cx="1040" cy="170" r="3.5" fill="${t.accent}"/>
 <text class="mono" x="64" y="76">SOFTWARE ENGINEER · TORONTO</text>
 <text class="name" x="60" y="170">Ruslan Mandell</text>
-<text class="tag" x="64" y="218">Products built end to end — AI tools, apps &amp; commerce.</text>
+<text class="tag" x="64" y="218">I build tools, apps and the occasional game.</text>
 <line x1="64" y1="258" x2="560" y2="258" stroke="${t.line}"/>
-<text class="mono" x="64" y="290">ENGINEER  /  FOUNDER  /  SHIPPING SINCE 2021<tspan class="caret" fill="${t.accent}"> ▍</tspan></text>
+<text class="mono" x="64" y="290">CS @ TMU ’27  /  ON GITHUB SINCE 2021<tspan class="caret" fill="${t.accent}"> ▍</tspan></text>
 </svg>`;
 }
 
-const HEADER_TEXT = "SOFTWARE ENGINEER · TORONTORuslan MandellProducts built end to end — AI tools, apps & commerce.ENGINEER / FOUNDER SHIPPING SINCE 2021▍";
+const HEADER_TEXT = "SOFTWARE ENGINEER · TORONTORuslan MandellI build tools, apps and the occasional game.CS @ TMU ’27 / ON GITHUB SINCE 2021▍";
 
 // ---------- project cards ----------
 

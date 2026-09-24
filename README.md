@@ -1,6 +1,6 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
-  <img alt="Ruslan Mandell — software engineer and founder building AI tools, apps and commerce" src="assets/header-light.svg" width="100%">
+  <img alt="Ruslan Mandell — software engineer in Toronto" src="assets/header-light.svg" width="100%">
 </picture>
 
 <p align="center">
@@ -15,9 +15,21 @@
 
 <br>
 
-I take products from idea to shipped, often solo: AI developer tools, native macOS apps, games, SaaS and ecommerce. Mostly TypeScript, Python and Swift, with Claude Code as my daily workbench.
+Hey, I'm Ruslan, a software engineer in Toronto.
 
-Before this I was the sole engineer on a white-label B2B payments app at [Cybrid](https://cybrid.xyz), where I shipped the integrations that opened remittance corridors into Africa and India. I also grew a collectibles brand from $0 to $300K in its first year. These days I'm most interested in **agentic commerce**: software and stores that AI agents can actually use. I finish CS at Toronto Metropolitan University in January 2027.
+**Things I've done**
+- Sole engineer on a B2B payments app at [Cybrid](https://cybrid.xyz), including the integrations for sending money to Africa and India
+- Grew a collectibles store from $0 to $300K in its first year
+- Four years of freelance web and payments work for small businesses
+- Built a macOS app, a Claude Code plugin, and a few Roblox games
+
+**Things I like doing**
+- Making tools for AI coding agents
+- Building Mac apps that feel nice to use
+- Game dev
+- Thinking about how AI agents will shop online
+
+Studying CS at TMU, done January 2027.
 
 <!-- latest starts -->
 <sub><samp>LATEST</samp> &nbsp; released <a href="https://github.com/RuslanAMandell/UnslopMyCode/releases/tag/v0.2.1">UnslopMyCode v0.2.1</a> Aug 20</sub>
@@ -36,12 +48,10 @@ Before this I was the sole engineer on a white-label B2B payments app at [Cybrid
   <a href="https://github.com/RuslanAMandell/tinyargs"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-tinyargs-dark.svg"><img alt="tinyargs — ultra-light Python argument parser" src="assets/card-tinyargs-light.svg" width="49%"></picture></a>
 </p>
 
-#### Ventures
+#### Side projects
 
-- **PokePortal**: collectibles ecommerce brand, $0 → $300K in year one, run solo from sourcing to fulfillment
 - **LeadNest**: lead-generation SaaS with Google Places targeting, automated outreach and Stripe credit billing
 - **Quizzler.io**: turns uploaded images into quizzes with OpenAI and Google Cloud Vision
-- **Freelance**: four years of ecommerce, booking and payments builds for small businesses, many on retainer
 
 <br>
 
