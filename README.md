@@ -22,21 +22,26 @@ Hey, I'm Ruslan, a software engineer in Toronto.
 - Four years of freelance web and payments work for small businesses
 - Built a macOS app, a Claude Code plugin, and a few Roblox games
 
-**Things I like**
-- Building small tools for the way I actually work, like a study app that helps me go deep on the topics I want to know well
-- Game dev, my guilty pleasure and where I lose track of time
-- Walking, a lot. My friends and family think the distances are insane
-- BJJ, and time with family, friends and my girlfriend
-- Simple ideas that make you think "how didn't I think of that"
+**Why I build small tools**<br>
+I feel like everyone has their own work and study ethic, and all the tools available are expensive. Using AI to build small productivity software isn't ingenious, but it's extremely helpful, especially when you have a particular way of doing something. I built a personal meta-learning and study app to really help me hone in on the concepts and topics I want to be knowledgeable on.
 
-**Favorite project so far**
-The Africa integration at Cybrid, my first big project after going full-time. I had to learn payment flows, logistics and regulations, with a mentor who's the most helpful senior engineer I've worked with. Then I got to watch millions of dollars move through code I wrote.
+**Guilty pleasure**<br>
+Definitely game dev. I find myself getting lost in game development.
 
-**On AI**
-Agentic coding works with you, not for you. It should speed up good work, not multiply slop.
+**Off the keyboard**<br>
+BJJ, walking (I'm a serial walker; my friends and family think I'm insane for how much and how far I walk), and spending time with family, friends and my girlfriend.
 
-**Someday**
-I love code, but I'm an artist at heart. A coffee shop or a clothing brand is on the list. I just like making things for people.
+**Favorite project**<br>
+My Africa integration for Cybrid. It was my first big project after being hired full-time, and it was everything: learning payment flows to Africa, all of the logistics and regulations, my mentor guiding me through it (genuinely the most helpful and insightful senior engineer), and then seeing the finished product and watching millions of dollars flow through my code.
+
+**On agentic coding**<br>
+I think agentic coding is a gift when you understand that it's working with you, not for you. It should be accelerating your good work, not 100x-ing slop.
+
+**Software I admire**<br>
+Too many. It's so easy to look at something and think "how didn't I think of that?", but there's something so admirable about a simple concept that's genius. It's like watching someone who's so good at something that they make it look simple, when in reality it's not.
+
+**Someday**<br>
+I love coding, but I'm an artist at heart. A coffee shop, a clothing brand. I love making things for people.
 
 Studying CS at TMU, done January 2027.
 
