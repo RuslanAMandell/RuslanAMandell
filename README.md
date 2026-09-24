@@ -17,16 +17,10 @@
 Hey, I'm Ruslan, a software engineer in Toronto.
 
 **Things I've done**
-- Sole engineer on a B2B payments app at [Cybrid](https://cybrid.xyz), including the integrations for sending money to Africa and India
+- Software engineer at [Cybrid](https://cybrid.xyz)
 - Grew a collectibles store from $0 to $300K in its first year
 - Four years of freelance web and payments work for small businesses
 - Built a macOS app, a Claude Code plugin, and a few Roblox games
-
-**Things I like doing**
-- Making tools for AI coding agents
-- Building Mac apps that feel nice to use
-- Game dev
-- Thinking about how AI agents will shop online
 
 Studying CS at TMU, done January 2027.
 
