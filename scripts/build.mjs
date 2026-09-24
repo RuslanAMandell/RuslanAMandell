@@ -10,6 +10,7 @@ import { createHash } from "node:crypto";
 const USER = "RuslanAMandell";
 const OUT = new URL("../assets/", import.meta.url);
 const TOKEN = process.env.GITHUB_TOKEN;
+const RAW = `https://raw.githubusercontent.com/${USER}/${USER}/main`;
 
 const THEMES = {
   dark: {
@@ -224,7 +225,9 @@ if (repos) {
   const readmeURL = new URL("../README.md", import.meta.url);
   let readme = await readFile(readmeURL, "utf8");
   for (const [name, v] of Object.entries(versions)) {
-    readme = readme.replace(new RegExp(`assets/${name.replace(".", "\\.")}(\\?v=\\w+)?`, "g"), `assets/${name}?v=${v}`);
+    // Absolute raw URL: GitHub proxies it through camo keyed on the full URL,
+    // whereas relative paths redirect to raw.githubusercontent.com and lose ?v.
+    readme = readme.replace(new RegExp(`(?:${RAW}/)?assets/${name.replace(".", "\\.")}(\\?v=\\w+)?`, "g"), `${RAW}/assets/${name}?v=${v}`);
   }
   const line = parts.length ? `<sub><samp>LATEST</samp> &nbsp; ${parts.join(" &nbsp;·&nbsp; ")}</sub>` : "";
   await writeFile(readmeURL, readme.replace(/(<!-- latest starts -->)[\s\S]*?(<!-- latest ends -->)/, `$1\n${line}\n$2`));
