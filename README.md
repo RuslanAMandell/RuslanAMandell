@@ -1,6 +1,6 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
-  <img alt="Ruslan Mandell — software engineer in Toronto" src="assets/header-light.svg" width="100%">
+  <img alt="ruslan@github neofetch: Ruslan Mandell, software engineer in Toronto" src="assets/header-light.svg" width="100%">
 </picture>
 
 <p align="center">

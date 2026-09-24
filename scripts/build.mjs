@@ -1,4 +1,4 @@
-// Builds the profile's SVG assets (header, activity) in light + dark.
+// Builds the profile's SVG assets (neofetch header, activity) in light + dark.
 // Fonts are subset from Google Fonts per SVG and inlined, so the images render
 // identically everywhere without external requests. Runs daily via GitHub Actions.
 //
@@ -64,44 +64,74 @@ async function fontCSS(families, text) {
 const FONTS = [["Instrument Serif", "ital@0;1"], ["Geist", "wght@400;500"], ["Geist Mono", "wght@400;500"]];
 
 // ---------- header ----------
+// Neofetch-style hero: ASCII R logo (data/ascii-r.txt, generated once from the
+// avatar) beside an info panel. Everything is visible by default and animates
+// *from* hidden, so renderers that skip CSS animation still show the final frame.
 
-function header(t, fonts) {
-  const W = 1200, H = 340;
-  // Faint dot field on the right, fading toward the text.
-  let dots = "";
-  for (let x = 640; x <= 1160; x += 18) {
-    for (let y = 40; y <= 300; y += 18) {
-      const d = Math.hypot(x - 1040, y - 170);
-      if (d > 190) continue;
-      const o = (1 - d / 190) * 0.9;
-      dots += `<circle cx="${x}" cy="${y}" r="1.3" fill="${t.muted}" opacity="${o.toFixed(2)}"/>`;
-    }
-  }
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Ruslan Mandell — software engineer in Toronto">
+const ASCII = (await readFile(new URL("../data/ascii-r.txt", import.meta.url), "utf8")).replace(/\s+$/, "").split("\n");
+const JOINED = new Date("2021-02-02T00:00:00Z");
+
+function uptime() {
+  const now = new Date();
+  const months = (now.getUTCFullYear() - JOINED.getUTCFullYear()) * 12 + now.getUTCMonth() - JOINED.getUTCMonth();
+  const y = Math.floor(months / 12), m = months % 12;
+  return `${y} years, ${m} month${m === 1 ? "" : "s"}`;
+}
+
+function header(t, fonts, contributions) {
+  const W = 1200, top = 118, lh = 15.6;
+  const H = Math.round(top + ASCII.length * lh + 44);
+  const art = ASCII.map((row, i) => {
+    // Dense glyphs in full ink, light ones muted, so the outline reads cleanly.
+    const spans = row.replace(/([#%@*]+)|([^#%@*]+)/g, (m, dense) => dense ? `<tspan fill="${t.ink}">${esc(m)}</tspan>` : esc(m));
+    return `<text class="a row" style="animation-delay:${(0.25 + i * 0.045).toFixed(3)}s" x="52" y="${(top + i * lh).toFixed(1)}" xml:space="preserve">${spans}</text>`;
+  }).join("\n");
+
+  const info = [
+    ["Name", "Ruslan Mandell"],
+    ["Role", "Software Engineer"],
+    ["Location", "Toronto"],
+    ["School", "TMU, Computer Science ’27"],
+    ["Languages", "TypeScript · Python · Swift · Luau"],
+    ["Editor", "Claude Code"],
+    ["Off hours", "game dev · BJJ · walking"],
+    ["Uptime", uptime()],
+    ["Contribs", contributions != null ? `${contributions.toLocaleString("en-US")} in the last year` : "—"],
+  ];
+  const px = 540, py = top + 10, plh = 34;
+  const start = 0.25 + ASCII.length * 0.045;
+  const line = (i, body) => `<g class="ln" style="animation-delay:${(start + i * 0.09).toFixed(2)}s">${body}</g>`;
+  const panel = [
+    line(0, `<text class="p" x="${px}" y="${py}"><tspan fill="${t.accent}">ruslan</tspan>@<tspan fill="${t.accent}">github</tspan></text>`),
+    line(1, `<text class="p" x="${px}" y="${py + plh}" fill="${t.muted}">${"-".repeat(13)}</text>`),
+    ...info.map(([k, v], i) => line(i + 2, `<text class="p" x="${px}" y="${py + (i + 2) * plh}"><tspan fill="${t.accent}">${esc(k)}</tspan><tspan fill="${t.muted}">:</tspan> ${esc(v)}</text>`)),
+    line(info.length + 2, [t.faint, t.muted, t.ink, t.accent, t.line, t.surface].map((c, i) =>
+      `<rect x="${px + i * 34}" y="${py + (info.length + 2) * plh - 12}" width="28" height="16" rx="2" fill="${c}" stroke="${t.line}"/>`).join("")),
+  ].join("\n");
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="ruslan@github neofetch: Ruslan Mandell, software engineer in Toronto">
 <style>${fonts}
-.mono{font-family:'Geist Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.14em;fill:${t.muted}}
-.name{font-family:'Instrument Serif',Georgia,serif;font-size:92px;fill:${t.ink};letter-spacing:-.01em}
-.tag{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:30px;fill:${t.muted}}
+.pr{font-family:'Geist Mono',ui-monospace,monospace;font-size:16px;fill:${t.muted}}
+.a{font-family:'Geist Mono',ui-monospace,monospace;font-size:14.3px;fill:${t.muted}}
+.p{font-family:'Geist Mono',ui-monospace,monospace;font-size:18px;fill:${t.ink}}
+.row{animation:wipe .55s steps(24,end) backwards}
+@keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.ln{animation:in .45s cubic-bezier(.2,.7,.2,1) backwards}
+@keyframes in{from{opacity:0;transform:translateX(-6px)}}
 .caret{animation:blink 1.1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
-.pulse{animation:pulse 3.2s ease-in-out infinite;transform-origin:1040px 170px}
-@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
-@media (prefers-reduced-motion:reduce){.caret,.pulse{animation:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.row,.ln,.caret{animation:none}}
 </style>
-<rect width="${W}" height="${H}" rx="14" fill="${t.bg}"/>
-<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="14" fill="none" stroke="${t.line}"/>
-<g>${dots}</g>
-<circle class="pulse" cx="1040" cy="170" r="3.5" fill="${t.accent}"/>
-<text class="mono" x="64" y="76">SOFTWARE ENGINEER · TORONTO</text>
-<text class="name" x="60" y="170">Ruslan Mandell</text>
-<text class="tag" x="64" y="218">I build tools, apps and the occasional game.</text>
-<line x1="64" y1="258" x2="560" y2="258" stroke="${t.line}"/>
-<text class="mono" x="64" y="290">CS @ TMU ’27  /  ON GITHUB SINCE 2021<tspan class="caret" fill="${t.accent}"> ▍</tspan></text>
+<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="14" fill="${t.bg}" stroke="${t.line}"/>
+<circle cx="34" cy="30" r="5.5" fill="${t.faint}"/><circle cx="54" cy="30" r="5.5" fill="${t.faint}"/><circle cx="74" cy="30" r="5.5" fill="${t.faint}"/>
+<line x1="0" y1="56.5" x2="${W}" y2="56.5" stroke="${t.line}"/>
+<text class="pr" x="52" y="90"><tspan fill="${t.accent}">ruslan@github</tspan> ~ $ <tspan fill="${t.ink}">neofetch</tspan><tspan class="caret" fill="${t.accent}"> ▍</tspan></text>
+${art}
+${panel}
 </svg>`;
 }
 
-const HEADER_TEXT = "SOFTWARE ENGINEER · TORONTORuslan MandellI build tools, apps and the occasional game.CS @ TMU ’27 / ON GITHUB SINCE 2021▍";
-
+const PRINTABLE = Array.from({ length: 95 }, (_, i) => String.fromCharCode(32 + i)).join("") + "·’—▍";
 
 // ---------- activity ----------
 
@@ -162,10 +192,11 @@ ${months}
 await mkdir(OUT, { recursive: true });
 const put = (name, svg) => writeFile(new URL(name, OUT), svg);
 
-const headerFonts = await fontCSS(FONTS, HEADER_TEXT);
-for (const [name, t] of Object.entries(THEMES)) await put(`header-${name}.svg`, header(t, headerFonts));
-
 const data = await gh(`query($login:String!){user(login:$login){contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{contributionCount date}}}}}}`, { login: USER });
+const headerFonts = await fontCSS(FONTS, PRINTABLE);
+const total = data?.user.contributionsCollection.contributionCalendar.totalContributions;
+for (const [name, t] of Object.entries(THEMES)) await put(`header-${name}.svg`, header(t, headerFonts, total));
+
 if (data) {
   const cal = data.user.contributionsCollection.contributionCalendar;
   const fonts = await fontCSS(FONTS, "THE LAST 12 MONTHScontributions, mostly private work,ACTIVE DAYSLONGEST STREAKCURRENTUPDATED JANFEBMARAPRMAYJUNJULAUGSEPOCTNOVDEC");
