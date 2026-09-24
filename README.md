@@ -1,56 +1,66 @@
-<h1 align="left" id="ruslanm-title">👋 Hi, I'm Ruslan Mandell</h1>
-<h4 align="left">Entrepreneur & Software engineer at a Series A payments-infrastructure company.</h4>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
+  <img alt="Ruslan Mandell — software engineer and founder building AI tools, apps and commerce" src="assets/header-light.svg" width="100%">
+</picture>
 
----
+<br>
 
-![Profile Views](https://komarev.com/ghpvc/?username=RuslanAMandell&color=blue)
-![GitHub followers](https://img.shields.io/github/followers/RuslanAMandell?label=Followers&style=social)
+I'm an engineer and founder who takes products from idea to shipped, solo when needed: AI developer tools, native macOS apps, games, SaaS and ecommerce.
 
-## 🛠 What I'm doing now
+Along the way I've been the sole engineer on a white-label B2B payments app at **[Cybrid](https://cybrid.xyz)**, where I shipped the integrations that opened cross-border remittance corridors into Africa and India, and grew a collectibles brand from $0 to $300K in its first year. Lately I'm most interested in **agentic commerce**: making software and stores legible to the AI agents that are starting to use them. I finish my CS degree at Toronto Metropolitan University in January 2027.
 
-- 💸 **Software Engineer @ Cybrid** (Series A stablecoin payments infrastructure, 150+ countries): sole engineer on the white-label B2B payments app; shipped the integrations that opened cross-border remittance corridors into Africa and India.
-- 🤖 Building at the intersection of **AI agents and commerce**: making online stores sellable to the machine buyers arriving now.
-- 🎓 Finishing my Computer Science degree at Toronto Metropolitan University (Jan 2027) while working full-time.
+<br>
 
-## 📦 Things I've built
-
-- **PokePortal**: collectibles ecommerce brand, $0 → $300K USD sales in its first year, run solo end to end (sourcing, live commerce, fulfillment).
-- **LeadNest**: lead-generation SaaS launched solo: business targeting via Google Places API, automated outreach, Stripe credit-based billing.
-- **Quizzler.io**: AI quiz generator turning uploaded images into quizzes (OpenAI + Google Cloud Vision).
-- **4 years of freelance builds**: ecommerce, booking flows, and Stripe payment systems for small businesses, many retained on monthly contracts.
-
-## 🚀 Stack
-
-### Languages
-<p>
-  <img src="https://skillicons.dev/icons?i=ts,js,python,ruby,java,lua,c,cpp" alt="TypeScript, JavaScript, Python, Ruby, Java, Lua, C, C++" />
-</p>
-
-### Frontend
-<p>
-  <img src="https://skillicons.dev/icons?i=react,angular,html,css,tailwind,vite" alt="React, Angular, HTML, CSS, TailwindCSS, Vite" />
-</p>
-
-### Backend & Data
-<p>
-  <img src="https://skillicons.dev/icons?i=rails,nodejs,express,postgres" alt="Ruby on Rails, Node.js, Express, PostgreSQL" />
-</p>
-
-### Cloud & Tools
-<p>
-  <img src="https://skillicons.dev/icons?i=aws,gcp,git,github" alt="AWS, GCP, Git, GitHub" />
-</p>
-
-- ⚡ AI-native workflow: Claude Code daily with custom agent skills, plus Codex, Gemini, and Cursor.
-- 🔁 Production experience with Temporal workflows, REST APIs, and payment-gateway integrations.
-
-## 📫 Connect
+### Selected work
 
 <p>
-  <a href="https://linkedin.com/in/ruslanmandell"><img src="https://skillicons.dev/icons?i=linkedin" alt="LinkedIn" /></a>
-  <a href="mailto:ruslanmandell@outlook.com"><img src="https://skillicons.dev/icons?i=gmail" alt="Email" /></a>
+  <a href="https://github.com/RuslanAMandell/UnslopMyCode"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-unslopmycode-dark.svg"><img alt="Unslop My Code — Claude Code plugin that finds production failures AI coding tools leave behind" src="assets/card-unslopmycode-light.svg" width="49%"></picture></a>
+  <a href="https://github.com/RuslanAMandell/glasslist-app"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-glasslist-app-dark.svg"><img alt="GlassList — always-on-top to-do panel for macOS" src="assets/card-glasslist-app-light.svg" width="49%"></picture></a>
+</p>
+<p>
+  <a href="https://github.com/RuslanAMandell/CMLib"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-cmlib-dark.svg"><img alt="CMLib — lightweight machine learning library in C" src="assets/card-cmlib-light.svg" width="49%"></picture></a>
+  <a href="https://github.com/RuslanAMandell/tinyargs"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-tinyargs-dark.svg"><img alt="tinyargs — ultra-light Python argument parser" src="assets/card-tinyargs-light.svg" width="49%"></picture></a>
 </p>
 
----
+<details>
+<summary><b>Earlier ventures</b></summary>
+<br>
 
-Building something in ecommerce or payments? Let's talk.
+| | |
+|:--|:--|
+| **PokePortal** | Collectibles ecommerce brand. $0 → $300K USD in year one, run solo end to end: sourcing, live commerce, fulfillment. |
+| **LeadNest** | Lead-generation SaaS. Business targeting via Google Places, automated outreach, Stripe credit-based billing. |
+| **Quizzler.io** | AI quiz generator that turns uploaded images into quizzes (OpenAI + Google Cloud Vision). |
+| **Freelance** | Four years of ecommerce, booking and Stripe payment builds for small businesses, many kept on monthly retainers. |
+
+</details>
+
+<br>
+
+### Activity
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/activity-dark.svg">
+  <img alt="Contribution activity over the last 12 months" src="assets/activity-light.svg" width="100%">
+</picture>
+
+<br><br>
+
+### Toolkit
+
+```
+languages   TypeScript · Python · Swift · Ruby · Luau · C / C++ · Java
+product     React · Next.js · Tailwind · SwiftUI · Rails · Node · Postgres
+systems     Temporal · Stripe · payment-gateway integrations · AWS · GCP
+workflow    Claude Code with custom agent skills & plugins · Codex · Cursor
+```
+
+<br>
+
+### Contact
+
+Building something ambitious in AI, commerce, or developer tooling? I'd like to hear about it.
+
+[LinkedIn](https://linkedin.com/in/ruslanmandell) &nbsp;·&nbsp; [Email](mailto:ruslanmandell@outlook.com)
+
+<sub>This page rebuilds itself daily. Header, cards and activity graph are generated SVGs (<a href="scripts/build.mjs">source</a>) that follow your light or dark theme.</sub>
