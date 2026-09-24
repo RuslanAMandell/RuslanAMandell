@@ -1,4 +1,4 @@
-// Builds the profile's SVG assets (header, project cards, activity) in light + dark.
+// Builds the profile's SVG assets (header, activity) in light + dark.
 // Fonts are subset from Google Fonts per SVG and inlined, so the images render
 // identically everywhere without external requests. Runs daily via GitHub Actions.
 //
@@ -21,36 +21,6 @@ const THEMES = {
   },
 };
 
-const PROJECTS = [
-  {
-    repo: "UnslopMyCode",
-    kicker: "Claude Code plugin",
-    title: "Unslop My Code",
-    lines: ["Finds the production failures AI coding tools leave behind —", "secrets, RLS, IDOR, runaway cost, hallucinated deps — then", "fixes the safe ones."],
-    meta: ["Python", "64 checks", "Security"],
-  },
-  {
-    repo: "glasslist-app",
-    kicker: "macOS 26 app",
-    title: "GlassList",
-    lines: ["An always-on-top to-do panel that floats over every window", "and Space, with on-device agents, a project board, calendar", "agenda and timers."],
-    meta: ["Swift", "Apple silicon", "@release"],
-  },
-  {
-    repo: "CMLib",
-    kicker: "C library",
-    title: "CMLib",
-    lines: ["A lightweight machine learning library in C for education", "and embedded systems. Linear and logistic regression,", "no dependencies."],
-    meta: ["C", "Embedded", "ML"],
-  },
-  {
-    repo: "tinyargs",
-    kicker: "Python package",
-    title: "tinyargs",
-    lines: ["An ultra-light argument parser for quick scripts. Grab", "flags and values in a few lines, with no boilerplate", "and no dependencies."],
-    meta: ["Python", "CLI", "Zero deps"],
-  },
-];
 
 // ---------- helpers ----------
 
@@ -132,34 +102,6 @@ function header(t, fonts) {
 
 const HEADER_TEXT = "SOFTWARE ENGINEER · TORONTORuslan MandellI build tools, apps and the occasional game.CS @ TMU ’27 / ON GITHUB SINCE 2021▍";
 
-// ---------- project cards ----------
-
-function card(t, p, fonts, release) {
-  const W = 580, H = 252;
-  const meta = p.meta.map((m) => (m === "@release" ? release ?? "Latest" : m));
-  let x = 32;
-  const chips = meta.map((m, i) => {
-    const w = m.length * 7.9 + 22;
-    const el = `<rect x="${x}" y="196" width="${w}" height="26" rx="13" fill="none" stroke="${t.line}"/><text class="chip" x="${x + w / 2}" y="213.5" text-anchor="middle">${esc(m)}</text>`;
-    x += w + 8;
-    return el;
-  }).join("");
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(p.title)} — ${esc(p.lines.join(" "))}">
-<style>${fonts}
-.k{font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.14em;fill:${t.muted}}
-.t{font-family:'Instrument Serif',Georgia,serif;font-size:36px;fill:${t.ink}}
-.b{font-family:Geist,system-ui,sans-serif;font-size:16px;fill:${t.muted}}
-.chip{font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;fill:${t.ink}}
-</style>
-<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="12" fill="${t.surface}" stroke="${t.line}"/>
-<circle cx="37" cy="41" r="3.5" fill="${t.accent}"/>
-<text class="k" x="50" y="45">${esc(p.kicker.toUpperCase())}</text>
-<text class="k" x="${W - 32}" y="45" text-anchor="end">↗</text>
-<text class="t" x="30" y="94">${esc(p.title)}</text>
-${p.lines.map((l, i) => `<text class="b" x="32" y="${126 + i * 22}">${esc(l)}</text>`).join("\n")}
-${chips}
-</svg>`;
-}
 
 // ---------- activity ----------
 
@@ -220,21 +162,8 @@ ${months}
 await mkdir(OUT, { recursive: true });
 const put = (name, svg) => writeFile(new URL(name, OUT), svg);
 
-const release = await (async () => {
-  try {
-    const d = await gh(`{repository(owner:"${USER}",name:"glasslist-app"){latestRelease{tagName}}}`);
-    return d?.repository?.latestRelease?.tagName ?? null;
-  } catch { return null; }
-})();
-
 const headerFonts = await fontCSS(FONTS, HEADER_TEXT);
 for (const [name, t] of Object.entries(THEMES)) await put(`header-${name}.svg`, header(t, headerFonts));
-
-for (const p of PROJECTS) {
-  const meta = p.meta.map((m) => (m === "@release" ? release ?? "Latest" : m));
-  const fonts = await fontCSS(FONTS, p.kicker.toUpperCase() + p.title + p.lines.join("") + meta.join("") + "↗");
-  for (const [name, t] of Object.entries(THEMES)) await put(`card-${p.repo.toLowerCase()}-${name}.svg`, card(t, p, fonts, release));
-}
 
 const data = await gh(`query($login:String!){user(login:$login){contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{contributionCount date}}}}}}`, { login: USER });
 if (data) {
@@ -244,6 +173,7 @@ if (data) {
 } else {
   console.warn("GITHUB_TOKEN not set — skipped activity graph.");
 }
+
 // "Latest" line in the README: newest public release and most recently pushed public repo.
 const repos = await gh(`{user(login:"${USER}"){repositories(first:10,privacy:PUBLIC,orderBy:{field:PUSHED_AT,direction:DESC}){nodes{name pushedAt latestRelease{tagName publishedAt url}}}}}`);
 if (repos) {
@@ -259,4 +189,4 @@ if (repos) {
   await writeFile(readmeURL, readme.replace(/(<!-- latest starts -->)[\s\S]*?(<!-- latest ends -->)/, `$1\n${line}\n$2`));
 }
 
-console.log("built", release ? `(glasslist ${release})` : "");
+console.log("built");
