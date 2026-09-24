@@ -4,7 +4,7 @@
 //
 //   GITHUB_TOKEN=... node scripts/build.mjs
 
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 const USER = "RuslanAMandell";
 const OUT = new URL("../assets/", import.meta.url);
@@ -244,4 +244,19 @@ if (data) {
 } else {
   console.warn("GITHUB_TOKEN not set — skipped activity graph.");
 }
+// "Latest" line in the README: newest public release and most recently pushed public repo.
+const repos = await gh(`{user(login:"${USER}"){repositories(first:10,privacy:PUBLIC,orderBy:{field:PUSHED_AT,direction:DESC}){nodes{name pushedAt latestRelease{tagName publishedAt url}}}}}`);
+if (repos) {
+  const nodes = repos.user.repositories.nodes.filter((r) => r.name !== USER);
+  const day = (d) => new Date(d).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+  const rel = nodes.filter((r) => r.latestRelease).sort((a, b) => b.latestRelease.publishedAt.localeCompare(a.latestRelease.publishedAt))[0];
+  const parts = [];
+  if (rel) parts.push(`released <a href="${rel.latestRelease.url}">${rel.name} ${rel.latestRelease.tagName}</a> ${day(rel.latestRelease.publishedAt)}`);
+  if (nodes[0] && nodes[0].name !== rel?.name) parts.push(`last pushed to <a href="https://github.com/${USER}/${nodes[0].name}">${nodes[0].name}</a> ${day(nodes[0].pushedAt)}`);
+  const readmeURL = new URL("../README.md", import.meta.url);
+  const readme = await readFile(readmeURL, "utf8");
+  const line = parts.length ? `<sub><samp>LATEST</samp> &nbsp; ${parts.join(" &nbsp;·&nbsp; ")}</sub>` : "";
+  await writeFile(readmeURL, readme.replace(/(<!-- latest starts -->)[\s\S]*?(<!-- latest ends -->)/, `$1\n${line}\n$2`));
+}
+
 console.log("built", release ? `(glasslist ${release})` : "");
